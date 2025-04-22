@@ -84,3 +84,11 @@ When using the web interface, pressing the "Off" button once sometimes fails to 
 ----
 
 ## Alternate Offline Version
+
+---
+
+## Credits
+
+- OLED SSD1306 driver base: Initialization and addressing adapted from the Raspberry Pi Pico SDK ssd1306_i2c example.
+
+- Wi-Fi HTTP server: TCP and lwIP usage guided by Pico W wifi/tcp_server example.
