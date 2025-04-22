@@ -65,6 +65,20 @@ Start: OLED says “Online and Active”, USS begins measuring, and LCD displays
 
 Stop: OLED displays “Going to Sleep, Goodnight” for 5 seconds before clearing, and LCD is turned off.
 
+----
+
+## With_Wifi_Output
+![image](https://github.com/user-attachments/assets/98c9bdc5-e10c-40f4-b4cc-88af184837c3)  
+
+![image7](https://github.com/user-attachments/assets/03c61af0-c14f-4ebf-9cec-814d8fd1fe67)  
+*GPIO On*
+  
+![image](https://github.com/user-attachments/assets/42a153a4-dae8-4e0d-bb8e-512d2fad1164)  
+
+![image8](https://github.com/user-attachments/assets/297842d3-07cc-48fb-927a-0116fd06637c)
+*GPIO Off*  
+*Tried to take a picture of system status before it fully shutoff* 
+
 
 ----
 
@@ -88,6 +102,12 @@ When using the web interface, pressing the "Off" button once sometimes fails to 
 An alternate offline version can also be created. To do this, all we have to do is change the main and add a component. First what was used was a Single Pole Double Throw switch. We connected middle pin to GPIO7, add another pin to ground, and we also activated internal pull up resistor. Then in main, we jsut have to change it in a way that checks to see which logic is active for GPIO7 and continue from there.
 ![image](https://github.com/user-attachments/assets/b4d09462-ab93-43eb-924f-a9aeb3ee061e)
 
+![image9](https://github.com/user-attachments/assets/ab79a492-8440-4fa9-8c0f-b48929242293)
+*System is on. Notice switch is on the right which actiavtes pullup resistor for GPIO7 and knows to be online*
+
+
+![image10](https://github.com/user-attachments/assets/638c72d0-203d-4dd3-93e4-cca7ce7100a6)
+*System is off. Notice switch is on the left now which grounds pullup resistor for GPIO7 and knows to go offline*
 
 ---
 
