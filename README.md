@@ -7,41 +7,41 @@ This project is built with modular code architecture and demonstrates clean peri
 ---
 
 ## Features
-Wi-Fi Web Server Control
+- **Wi-Fi Web Server Control**  
 Host a lightweight web server directly on the Pico W to toggle system behavior via two buttons: "Turn On" and "Turn Off".
 
-Real-Time Distance Measurement
+- **Real-Time Distance Measurement**  
 Continuously reads distance from an ultrasonic sensor using GPIO interrupts for precise timing.
 
-OLED Status Display
+- **OLED Status Display**  
 Displays current system status messages such as “Online and Active” or “Going to Sleep, Goodnight”
 
-LCD Distance Display
+- **LCD Distance Display**  
 A 16x2 I2C LCD module displays the current distance in inches on the second line while preserving a static label on the first line.
 
-Modular Code Design
+- **Modular Code Design**  
 All major components (Wi-Fi, OLED, LCD, USS) are organized into separate .c/.h files for clarity, reusability, and scalability.
 
-Offline-Compatible Variant
+- **Offline-Compatible Variant**  
 A fully functional version of the project is available without Wi-Fi support, allowing demonstrations in environments with no internet access.
 
 ----
 
 ## Hardware Used
 
-Raspberry Pi Pico W
+- **Raspberry Pi Pico W**  
 The main microcontroller responsible for running the code, managing I2C peripherals, GPIO interrupts, and hosting the web server.
 
-Ultrasonic Sensor (HC-SR04)
+- **Ultrasonic Sensor (HC-SR04)**  
 Measures distance using echo timing on two GPIOs (Trigger and Echo). Connected to GPIO 0 (Trigger) and GPIO 1 (Echo).
 
-16x2 I2C LCD Module (PCF8574 backpack)
+- **16x2 I2C LCD Module (PCF8574 backpack)**  
 Displays static and dynamic messages. Uses I2C0 on GPIO 16 (SDA) and GPIO 17 (SCL).
 
-0.96" I2C OLED Display (SSD1306, 128x64)
+- **0.96" I2C OLED Display (SSD1306, 128x64)**  
 Displays status messages using a full 8x8 ASCII font table. Also connected via I2C0 using GPIO 16 (SDA) and GPIO 17 (SCL).
 
-USB Cable and Serial Terminal
+- **USB Cable and Serial Terminal**  
 Used for debugging and serial output via CoolTerm or the VSCode serial monitor.
 
 -----
@@ -79,24 +79,6 @@ Stop: OLED displays “Going to Sleep, Goodnight” for 5 seconds before clearin
 *GPIO Off*  
 *Tried to take a picture of system status before it fully shutoff* 
 
-
-----
-
-
-## Folder Structure
-
-/src        --> Source files for each module (LCD, OLED, USS, Wi-Fi)  
-/include    --> Header files for each module  
-Rest of files (Combined_project.c, lwipopts.h (automated code when enabling wifi), and CMakeList) are in main files
-
-----
-
-## Known Bugs
-Double "Off" Click Required:  
-When using the web interface, pressing the "Off" button once sometimes fails to stop the system. A second click is required for the shutdown sequence to trigger fully. Not sure where the error lies yet.
-
-----
-
 ## Alternate Offline Version
 
 An alternate offline version can also be created. To do this, all we have to do is change the main and add a component. First what was used was a Single Pole Double Throw switch. We connected middle pin to GPIO7, add another pin to ground, and we also activated internal pull up resistor. Then in main, we jsut have to change it in a way that checks to see which logic is active for GPIO7 and continue from there.
@@ -106,10 +88,25 @@ An alternate offline version can also be created. To do this, all we have to do 
 *System is on. Notice switch is on the right which actiavtes pullup resistor for GPIO7 and knows to be online*
 
 
-![image10](https://github.com/user-attachments/assets/638c72d0-203d-4dd3-93e4-cca7ce7100a6)
+![image10](https://github.com/user-attachments/assets/7c79b379-b018-4b15-8eca-426749e5c459)
 *System is off. Notice switch is on the left now which grounds pullup resistor for GPIO7 and knows to go offline*
 
----
+----
+
+
+## Folder Structure
+
+/src        --> Source files for each module (LCD, OLED, USS, Wi-Fi)  
+/include    --> Header files for each module  
+Rest of files (Combined_project.c, lwipopts.h (automated code when enabling wifi), and CMakeList) are in original folder
+
+----
+
+## Known Bugs
+Double "Off" Click Required:  
+When using the web interface, pressing the "Off" button once sometimes fails to stop the system. A second click is required for the shutdown sequence to trigger fully. Not sure where the error lies yet.
+
+----
 
 ## Credits
 
