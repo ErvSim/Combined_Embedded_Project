@@ -46,7 +46,24 @@ Used for debugging and serial output via CoolTerm or the VSCode serial monitor.
 
 -----
 
-## How it Works
+## How It Works
+This project brings together four hardware components — an ultrasonic distance sensor, an I2C LCD, an I2C OLED, and Wi-Fi networking — to create a real-time, web-controlled measurement display system.
+
+1. Ultrasonic Sensor (USS) – GPIO with Interrupts  
+The ultrasonic sensor measures distance by sending a pulse and waiting for its echo. It’s connected via GPIO and uses interrupts on both rising and falling edges of the echo pin to calculate the time-of-flight. The distance is then computed using the speed of sound and converted into inches. All logic for this was implemented from scratch using GPIO interrupt handling on the Raspberry Pi Pico W.
+
+2. I2C LCD – Real-Time Distance Display
+The LCD uses a PCF8574 I/O expander for I2C communication and operates in 4-bit mode. The initialization sequence and data transfer were manually implemented, including command splitting and backlight control. It continuously displays the distance measured by the USS on two lines: a static label on the first and a dynamic numeric value on the second.
+
+3. I2C OLED – Status Display
+The OLED (SSD1306, 128x64) is used to display system status messages like “Online and Active” or “Going to Sleep, Goodnight”. It communicates over I2C on the same bus as the LCD. The initialization sequence, character rendering, and screen handling are based on an open-source SSD1306 driver. 
+
+4. Wi-Fi Web Server – Remote Control
+The Raspberry Pi Pico W connects to a local Wi-Fi network using cyw43_arch and the lwIP TCP/IP stack. A minimal TCP server is launched that hosts a webpage with two buttons: Start and Stop. When a user clicks either button, the server sets internal flags to trigger device behavior. For example:
+
+Start: OLED says “Online and Active”, USS begins measuring, and LCD displays values.
+
+Stop: OLED displays “Going to Sleep, Goodnight” for 5 seconds before clearing, and LCD is turned off.
 
 
 ----
@@ -57,3 +74,13 @@ Used for debugging and serial output via CoolTerm or the VSCode serial monitor.
 /src        --> Source files for each module (LCD, OLED, USS, Wi-Fi)  
 /include    --> Header files for each module  
 Rest of files (Combined_project.c, lwipopts.h (automated code when enabling wifi), and CMakeList) are in main files
+
+----
+
+## Known Bugs
+Double "Off" Click Required:  
+When using the web interface, pressing the "Off" button once sometimes fails to stop the system. A second click is required for the shutdown sequence to trigger fully. This appears to be related to TCP connection timing or missed flag handling.
+
+----
+
+## Alternate Offline Version
