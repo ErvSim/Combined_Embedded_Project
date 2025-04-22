@@ -27,7 +27,7 @@ A fully functional version of the project is available without Wi-Fi support, al
 
 ----
 
-## Hardware Uued
+## Hardware Used
 
 Raspberry Pi Pico W
 The main microcontroller responsible for running the code, managing I2C peripherals, GPIO interrupts, and hosting the web server.
@@ -43,3 +43,17 @@ Displays status messages using a full 8x8 ASCII font table. Also connected via I
 
 USB Cable and Serial Terminal
 Used for debugging and serial output via CoolTerm or the VSCode serial monitor.
+
+-----
+
+## How it Works
+
+
+----
+
+
+## Folder Structure
+
+/src        → Source files for each module (LCD, OLED, USS, Wi-Fi)
+/include    → Header files for each module
+Rest of files (Combined_project.c, lwipopts.h (automated code when enabling wifi), and CMakeList) are in main files
