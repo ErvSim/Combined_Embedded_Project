@@ -79,7 +79,7 @@ Rest of files (Combined_project.c, lwipopts.h (automated code when enabling wifi
 
 ## Known Bugs
 Double "Off" Click Required:  
-When using the web interface, pressing the "Off" button once sometimes fails to stop the system. A second click is required for the shutdown sequence to trigger fully. This appears to be related to TCP connection timing or missed flag handling.
+When using the web interface, pressing the "Off" button once sometimes fails to stop the system. A second click is required for the shutdown sequence to trigger fully. Not sure where the error lies yet.
 
 ----
 
