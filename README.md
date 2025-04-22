@@ -85,6 +85,10 @@ When using the web interface, pressing the "Off" button once sometimes fails to 
 
 ## Alternate Offline Version
 
+An alternate offline version can also be created. To do this, all we have to do is change the main and add a component. First what was used was a Single Pole Double Throw switch. We connected middle pin to GPIO7, add another pin to ground, and we also activated internal pull up resistor. Then in main, we jsut have to change it in a way that checks to see which logic is active for GPIO7 and continue from there.
+![image](https://github.com/user-attachments/assets/b4d09462-ab93-43eb-924f-a9aeb3ee061e)
+
+
 ---
 
 ## Credits
