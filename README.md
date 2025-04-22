@@ -54,6 +54,6 @@ Used for debugging and serial output via CoolTerm or the VSCode serial monitor.
 
 ## Folder Structure
 
-/src        → Source files for each module (LCD, OLED, USS, Wi-Fi)
-/include    → Header files for each module
+/src        --> Source files for each module (LCD, OLED, USS, Wi-Fi)  
+/include    --> Header files for each module  
 Rest of files (Combined_project.c, lwipopts.h (automated code when enabling wifi), and CMakeList) are in main files
